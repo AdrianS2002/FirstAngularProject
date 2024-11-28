@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, Input, input, computed, Output,EventEmitter } from '@angular/core';
+import { Component, Input, input, computed, Output,EventEmitter,output } from '@angular/core';
 
 
 @Component({
@@ -10,22 +10,27 @@ import { Component, Input, input, computed, Output,EventEmitter } from '@angular
 })
 export class UserComponent {
  
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
-
-  @Output() select= new EventEmitter();
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  @Input({required: true}) user!: {
+    id:string;
+    avatar:string;
+    name:string;
+  }
+  @Output() select= new EventEmitter<string>();
+  // select = output<string>();
   // avatar = input.required<string>();
   // name = input.required<string>();
 
   // imagePath = computed(() => {return 'users/' + this.avatar()});
 
   get imagePath() {
-    return 'users/' + this.avatar;
+    return 'users/' + this.user.avatar;
   }
 
   onSelectUser(id: string) {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
    
   }
 }
