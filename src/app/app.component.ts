@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from "./user/user.component";
-
+import { DUMMY_USERS } from '../../public/dummy-users';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,5 +10,5 @@ import { UserComponent } from "./user/user.component";
   imports: [HeaderComponent, UserComponent],
 })
 export class AppComponent {
-  title = 'project1';
+  users = DUMMY_USERS;
 }
