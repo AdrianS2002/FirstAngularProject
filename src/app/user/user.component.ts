@@ -1,17 +1,13 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, input, computed, Output,EventEmitter,output } from '@angular/core';
-
+import { type User } from './user.model';
 // type User = {
 //   id: string;
 //   avatar: string;
 //   name: string;
 // }
 
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+
 
 @Component({
   selector: 'app-user',
