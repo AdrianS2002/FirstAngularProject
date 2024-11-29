@@ -10,7 +10,7 @@ import { TaskComponent } from "./tasks/task/task.component";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HeaderComponent, UserComponent, TasksComponent, NgFor, NgIf, TaskComponent ],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
 })
 export class AppComponent {
   users = DUMMY_USERS;
