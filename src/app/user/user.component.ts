@@ -1,7 +1,7 @@
-import { ThisReceiver } from '@angular/compiler';
+
 import { Component, Input, input, computed, Output,EventEmitter,output } from '@angular/core';
 import { type User } from './user.model';
-import { CardComponent } from "../shared/card/card.component";
+
 // type User = {
 //   id: string;
 //   avatar: string;
@@ -12,10 +12,8 @@ import { CardComponent } from "../shared/card/card.component";
 
 @Component({
   selector: 'app-user',
-  standalone: true,
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css',
-  imports: [CardComponent]
+  styleUrl: './user.component.css'
 })
 export class UserComponent {
  
