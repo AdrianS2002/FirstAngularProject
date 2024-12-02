@@ -1,24 +1,42 @@
-import { Component, computed, signal } from '@angular/core';
-import { DUMMY_USERS } from '../../../public/dummy-users';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, Input, input, computed, Output,EventEmitter,output } from '@angular/core';
+import { type User } from './user.model';
+import { CardComponent } from "../shared/card/card.component";
+// type User = {
+//   id: string;
+//   avatar: string;
+//   name: string;
+// }
 
 
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-console.log(randomIndex);
+
 @Component({
   selector: 'app-user',
   standalone: true,
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
+  imports: [CardComponent]
 })
 export class UserComponent {
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
-  imagePath = computed(() =>'./users/' + this.selectedUser().avatar);
-  // get imagePath() {
-  //   return `./users/` + this.selectedUser.avatar ;
-  // }
+ 
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  @Input({required: true}) user!: User;
+  @Output() select= new EventEmitter<string>();
+  @Input({required: true}) selected!: boolean;
+  // select = output<string>();
+  // avatar = input.required<string>();
+  // name = input.required<string>();
 
-  onSelectUser(){
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
+  // imagePath = computed(() => {return 'users/' + this.avatar()});
+
+  get imagePath() {
+    return 'users/' + this.user.avatar;
+  }
+
+  onSelectUser(id: string) {
+    this.select.emit(this.user.id);
+   
   }
 }

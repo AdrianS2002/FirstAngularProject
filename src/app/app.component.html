@@ -2,9 +2,23 @@
 
 <main>
     <ul id="users">
-        <li>
-            <app-user/>        
-        </li>
+
+        @for (user of users; track user.id){
+            <li >
+                <app-user
+                    [user]="user"
+                    [selected]="user.id === selectedUser.id"
+                    (select)="onSelect($event)"/>        
+            </li>
+        }
+    
     </ul>
+
+    @if (selectedUser){
+        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
+    } 
+    @else {
+        <p id = "fallback">Please select a user</p>
+    }
     
 </main>
